@@ -70,9 +70,6 @@ def test_pca_reconstruction(test_dir,
             axes[1].set_title(f'Reconstruction\nPred: {best_person}')
             axes[1].axis('off')
 
-            # 1) Show figure in a *blocking* way
-            plt.show(block=False)  # Typically blocks until closed in a normal Python script
-            plt.waitforbuttonpress()    # Wait for a click/keypress in the figure
-
-            # 2) Close this figure before moving to the next
+            plt.show(block=False)
+            plt.waitforbuttonpress()
             plt.close(fig)

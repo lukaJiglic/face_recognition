@@ -142,12 +142,8 @@ def build_pca_for_new_user(captured_images, output_dir):
     """
 
     # Convert images to a 2D array [num_images x (height*width)]
-    # Possibly resize to match your existing PCA pipeline’s target_size
-    # For a robust approach, do your typical preprocessing steps
     data_matrix = []
     for img in captured_images:
-        # If you normally do resizing:
-        # img = cv2.resize(img, (84, 96))  # example
         vec = img.flatten().astype(np.float64)
         data_matrix.append(vec)
     data_matrix = np.array(data_matrix).T  # shape (d, n)
@@ -159,15 +155,12 @@ def build_pca_for_new_user(captured_images, output_dir):
     centered_data = data_matrix - mean_face
 
     # Compute covariance in a smaller dimension:
-    # Usually we do SVD or use the trick with centered_data.T * centered_data
-    # For example, with SVD:
     U, S, Vt = np.linalg.svd(centered_data, full_matrices=False)
 
     eigenfaces = U  # shape (d, n)
-    eigenvalues = S**2  # since S is the singular values, S**2 are the eigenvalues
+    eigenvalues = S**2
 
-    # Save the PCA model (eigenfaces, eigenvalues, mean_face) to disk or in memory
-    # For example as a NumPy pickled dict:
+    # Save the PCA model (eigenfaces, eigenvalues, mean_face) to disk
     pca_model = {
         "mean_face": mean_face.ravel(),     # shape (d,)
         "eigenfaces": eigenfaces,           # shape (d, n)

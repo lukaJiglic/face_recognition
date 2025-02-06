@@ -85,8 +85,8 @@ def interactive_camera_capture(output_dir="new_user_data",
             if len(faces) == 0:
                 print("[INFO] No face detected. Try again.")
             else:
-                # Here we could pick the largest face or just the first one
-                (x, y, w, h) = faces[0]  # simplest approach: take the first
+                # Here we pick the first face
+                (x, y, w, h) = faces[0]
                 face_crop = gray[y:y+h, x:x+w]
                 # Resize to face_size
                 face_crop = cv2.resize(face_crop, face_size)
@@ -108,7 +108,7 @@ def interactive_camera_capture(output_dir="new_user_data",
                 build_pca_for_new_user(captured_faces, output_dir)
                 print("[INFO] PCA build complete. You may now press 't' to test or 'q' to quit.")
         elif key == ord('t'):
-            # Test PCA with camera (you can implement a real-time recognition test)
+            # Test PCA with camera
             print("[INFO] Starting PCA test with the camera feed...")
             test_pca_live(output_dir, face_size=face_size)
 

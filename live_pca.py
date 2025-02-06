@@ -132,7 +132,7 @@ def load_all_pca_models_including_parent(pca_dir):
 
     for subfolder in parent_subfolders:
         subfolder_path = os.path.join(parent_dir, subfolder)
-        # Skip if it's exactly the same as pca_dir (we'll handle pca_dir below)
+        # Skip if it's exactly the same as pca_dir
         if os.path.abspath(subfolder_path) == abs_pca_dir:
             continue
 

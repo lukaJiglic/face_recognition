@@ -17,11 +17,7 @@ if __name__ == "__main__":
     main()
 
 
-    # 1) Interactive capture
+    #Interactive capture
     interactive_camera_capture(
         output_dir="new_user_data",
     )
-    # 2) Done. The user may have built the PCA in the interactive loop,
-    #    or we store images for use later. 
-    #    If they built a PCA, you can also run:
-    # test_pca_live("new_user_data")
